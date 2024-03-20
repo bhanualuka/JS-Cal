@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator js</title>
+    <link rel="stylesheet" href="./Calculator.css" />
+    <link
+      rel="icon"
+      href="C:\Users\aluka\OneDrive\Documents\Frontend\Images\calculator-icon.png"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="result"><p id="logic">0</p></div>
+      <div class="buttons">
+        <div class="row">
+          <button class="color">C</button>
+          <button class="color">DEL</button>
+          <button>+</button>
+          <button>%</button>
+        </div>
+
+        <div class="row">
+          <button>7</button>
+          <button>8</button>
+          <button>9</button>
+          <button>/</button>
+        </div>
+
+        <div class="row">
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>*</button>
+        </div>
+        <div class="row">
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>-</button>
+        </div>
+        <div class="row">
+          <button id="dot">.</button>
+          <button>0</button>
+          <button class="color" id="equalto">=</button>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    // let aa = "bhanuprak";
+    // console.log(aa.substring(0, 8));
+    let buttons = document.getElementsByTagName("button");
+    console.log(buttons);
+    console.log(buttons[0].innerText);
+    let result = document.getElementById("logic");
+    console.log(result);
+
+    for (i in buttons) {
+      buttons[i].addEventListener("click", (event) => {
+        let userInput = event.target.innerText;
+        updateDisplay(userInput);
+      });
+
+      // function updateDisplay(userInput) {
+      //   let currentDisplay = result.innerText;
+      //   if (currentDisplay === "0") {
+      //     if (userInput !== "C" && userInput !== "DEL" && userInput !== "=") {
+      //       result.innerText = userInput;
+      //     }
+      //   } else {
+      //     if (userInput === "DEL") {
+      //       result.innerText = currentDisplay.substring(0, currentDisplay.length - 1);
+      //     } else if (userInput === "C") {
+      //       result.innerText = "0";
+      //     } else if (userInput === "=") {
+      //       let display = result.innerText;
+      //       result.innerText = eval(display);
+      //     } else {
+      //       result.innerText += userInput;
+      //     }
+      //   }
+      // }
+
+      function updateDisplay(userInput) {
+        let currentDisplay = result.innerText;
+        if (currentDisplay === "0") {
+          if (userInput !== "C" && userInput !== "DEL" && userInput !== "=") {
+            result.innerText = userInput;
+          }
+        } else {
+          if (userInput === "DEL") {
+            result.innerText = currentDisplay.substring(
+              0,
+              currentDisplay.length - 1
+            );
+          }
+          if (userInput === "C") {
+            result.innerText = "0";
+          }
+
+          if (userInput != "C" && userInput != "DEL" && userInput != "=") {
+            result.innerText += userInput;
+          }
+          if (userInput === "=") {
+            let display = result.innerText;
+            result.innerText = eval(display);
+          }
+        }
+      }
+    }
+  </script>
+</html>
